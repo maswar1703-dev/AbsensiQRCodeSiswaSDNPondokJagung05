@@ -11,10 +11,16 @@ use App\Http\Controllers\AbsensiController;
 | ROOT
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return redirect('/dashboard');
-});
 
+Route::get('/', function () {
+
+    if (auth()->check()) {
+        return redirect('/dashboard');
+    }
+
+    return redirect('/login');
+
+});
 /*
 |--------------------------------------------------------------------------
 | AUTH ROUTES
@@ -34,9 +40,8 @@ Route::middleware(['auth'])->group(function () {
     | DASHBOARD
     |--------------------------------------------------------------------------
     */
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
     /*
     |--------------------------------------------------------------------------

@@ -2,6 +2,30 @@
 
 @section('content')
 
+<style>
+
+@media (max-width:768px){
+
+    h2{
+        font-size:20px;
+    }
+
+    .card-body h2{
+        font-size:24px;
+    }
+
+    .btn{
+        margin-bottom:5px;
+    }
+
+    table{
+        font-size:12px;
+    }
+
+}
+
+</style>
+
 <div class="container">
 
 
@@ -15,7 +39,7 @@
 
 <div class="card shadow p-4">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
 
         <div>
             <h2>Laporan Absensi Harian</h2>
@@ -55,9 +79,9 @@
    {{-- FILTER DATA --}}
 <form action="{{ route('laporan') }}" method="GET" class="mb-4">
 
-    <div class="row g-2">
+    <div class="row g-3">
 
-        <div class="col-md-2">
+        <div class="col-12 col-md-2">
             <select name="bulan" class="form-control">
                 <option value="">Pilih Bulan</option>
 
@@ -76,7 +100,7 @@
             </select>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-12 col-md-2">
             <input
                 type="number"
                 name="tahun"
@@ -85,7 +109,7 @@
             >
         </div>
 
-        <div class="col-md-2">
+        <div class="col-12 col-md-2">
             <select name="kelas" class="form-control">
 
                 <option value="">Semua Kelas</option>
@@ -102,7 +126,7 @@
             </select>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-12 col-md-2">
             <input
                 type="date"
                 name="tanggal"
@@ -111,20 +135,20 @@
             >
         </div>
 
-        <div class="col-md-2">
+        <div class="col-12 col-md-2">
             <button class="btn btn-success w-100">
                 Lihat Data
             </button>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-6 col-md-1">
             <a href="{{ route('absensi.sakit') }}"
                class="btn btn-warning w-100">
                 Sakit
             </a>
         </div>
 
-        <div class="col-md-1">
+        <div class="col-6 col-md-1">
             <a href="{{ route('absensi.izin') }}"
                class="btn btn-info text-white w-100">
                 Izin
@@ -158,7 +182,8 @@
 
     <div class="card-body">
 
-        <table class="table table-bordered">
+        <div class="table-responsive">
+<table class="table table-bordered">
 
             <thead>
 
@@ -215,7 +240,8 @@
 
 @endif
 
-    <table class="table table-bordered table-striped">
+    <div class="table-responsive">
+<table class="table table-bordered table-striped">
 
         <thead class="table-dark">
 

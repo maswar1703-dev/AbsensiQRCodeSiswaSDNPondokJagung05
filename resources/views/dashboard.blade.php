@@ -8,62 +8,66 @@ use App\Models\Kelas;
 use App\Models\Absensi;
 @endphp
 
-<div class="card border-0 shadow-sm p-5">
+<div class="container-fluid">
 
-```
-<div class="text-center">
+    <div class="card border-0 shadow-sm p-4">
 
-    <img src="{{ asset('logo.png') }}" width="220">
+        <div class="text-center">
 
-    <h1 class="fw-bold text-primary mt-4">
-        Sistem Absensi Siswa
-    </h1>
+            {{-- LOGO SEKOLAH --}}
+            <img src="{{ asset('images/logo-sekolah.png') }}" 
+     alt="Logo Sekolah" 
+     class="img-fluid mb-3"
+     style="max-width:180px; width:100%;">
 
-    <h2>
-        SDN Pondok Jagung 05
-    </h2>
+            <h1 class="fw-bold text-primary">
+                Sistem Absensi Siswa
+            </h1>
 
-    <p class="text-muted">
-        {{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}
-    </p>
+            <h4 class="text-secondary">
+                SDN Pondok Jagung 05
+            </h4>
 
-    <hr class="my-4">
+            <p class="text-muted">
+                {{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}
+            </p>
 
-</div>
-
-<div class="row">
-
-    <div class="col-md-4 mb-3">
-        <div class="card bg-primary text-white border-0 shadow">
-            <div class="card-body text-center">
-                <h4>Total Siswa</h4>
-                <h1>{{ Siswa::count() }}</h1>
-            </div>
         </div>
+
     </div>
 
-    <div class="col-md-4 mb-3">
-        <div class="card bg-success text-white border-0 shadow">
-            <div class="card-body text-center">
-                <h4>Total Kelas</h4>
-                <h1>{{ Kelas::count() }}</h1>
+    <div class="row mt-4">
+
+        <div class="col-md-4 mb-3">
+            <div class="card bg-primary text-white shadow border-0">
+                <div class="card-body text-center">
+                    <h5>Total Siswa</h5>
+                    <h1>{{ Siswa::count() }}</h1>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-md-4 mb-3">
-        <div class="card bg-warning border-0 shadow">
-            <div class="card-body text-center">
-                <h4>Absensi Hari Ini</h4>
-                <h1>
-                    {{ Absensi::whereDate('tanggal', date('Y-m-d'))->count() }}
-                </h1>
+        <div class="col-md-4 mb-3">
+            <div class="card bg-success text-white shadow border-0">
+                <div class="card-body text-center">
+                    <h5>Total Kelas</h5>
+                    <h1>{{ Kelas::count() }}</h1>
+                </div>
             </div>
         </div>
-    </div>
 
-</div>
-```
+        <div class="col-md-4 mb-3">
+            <div class="card bg-warning shadow border-0">
+                <div class="card-body text-center">
+                    <h5>Absensi Hari Ini</h5>
+                    <h1>
+                        {{ Absensi::whereDate('tanggal', date('Y-m-d'))->count() }}
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 

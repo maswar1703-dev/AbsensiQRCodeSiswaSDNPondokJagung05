@@ -201,20 +201,27 @@ function onScanSuccess(decodedText)
 
 Html5Qrcode.getCameras().then(devices => {
 
-    if (devices && devices.length)
-    {
+    if (devices && devices.length) {
+
         scanner.start(
             { facingMode: "environment" },
             {
                 fps: 15,
-                qrbox: 250
+                qrbox: { width: 250, height: 250 }
             },
             onScanSuccess
         );
+
+    } else {
+        document.getElementById('status').innerText =
+            "Kamera tidak ditemukan";
     }
 
+}).catch(err => {
+    console.log(err);
+    document.getElementById('status').innerText =
+        "Gagal akses kamera";
 });
-
 </script>
 
 </body>
